@@ -1,0 +1,46 @@
+<div ng-controller="SearchCtrl" class="row animated fadeIn">
+    <div class="col-md-3 pb-2">
+        <div class="card">
+          <div class="card-body">
+            <form id="search_form" ng-submit="search('Opory', query, pagination.current)">
+              <div class="form-group">
+                <label for="nf-search">Поиск</label>
+                <input type="text" id="search-field" name="nf-search" class="form-control" ng-model="query" placeholder="Техместо">
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" type="submit" form="search_form" ng-disabled="disabled">
+              <i class="fa"></i>Найти</button>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-9 pr-0">
+        <table class="table table-responsive-sm table-hover table-sm table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 5%"></th>
+                    <th style="width: 18%">Название</th>
+                    <th style="width: 30%">Техместо</th>
+                    <th style="width: 27%">Координаты</th>
+                    <th style="width: 20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr current-page="pagination.current" dir-paginate="opory in data.items | itemsPerPage: itemPerPage" pagination-id="opory">
+                    <td><i class="fa fa-dot-circle-o" style="color: {{opory.properties.kVoltage}}"></i></td>
+                    <td>{{opory.properties.NoInLine}}</td>
+                    <td>{{opory.properties.tplnr}}</td>
+                    <td>{{opory.geometry.coordinates}}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="/api/getobjs?format=KML&filename=KML&tplnr={{opory.properties.tplnr}}&type=Opory" role="button">KML</a>
+                        <button class="btn btn-danger btn-sm" ng-click="remove('Opory', opory.properties.tplnr)">Удалить</button>
+                        <button class="btn btn-primary btn-sm" ng-click="open('lg', opory, 'electric')">Свойства</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls  pagination-id="opory"></dir-pagination-controls>
+    </div>
+</div>
+

@@ -1,0 +1,104 @@
+main {
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+.pie-container {
+    position: relative;
+    float: left;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.pie-container:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    z-index: 50;
+    width: 50%;
+    height: 50%;
+    color: white;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.8);
+}
+
+.pie {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #aaaaaa;
+    border-radius: 50%;
+    clip: rect(0px, 75px, 150px, 0px);
+}
+
+#safari {
+    z-index: 10;
+    background-color: #aaaaaa;
+    transform: rotate(-20deg);
+}
+
+#ie {
+    z-index: 20;
+    background-color: #0074d9;
+    transform: rotate(160deg);
+}
+
+#firefox {
+    z-index: 30;
+    background-color: #ff851b;
+    transform: rotate(20deg);
+}
+
+#chrome {
+    z-index: 40;
+    background-color: #2ecc40;
+    transform: rotate(100deg);
+}
+
+.stats {
+    float: left;
+    margin-left: 50px;
+}
+
+.stats ul {
+    list-style: none;
+}
+
+.stats li {
+    position: relative;
+    margin: 10px 0;
+}
+
+.stats li:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: -25px;
+    width: 15px;
+    height: 15px;
+    background-color: #aaaaaa;
+}
+.stats li[data-name="Chrome"]:before {
+    background-color: #2ecc40;
+}
+
+.stats li[data-name="Firefox"]:before {
+    background-color: #ff851b;
+}
+
+.stats li[data-name="Internet Explorer"]:before {
+    background-color: #0074d9;
+}

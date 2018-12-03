@@ -1,0 +1,11 @@
+.leaflet-control-layers-tree-child {    
+    cursor: pointer;
+    margin-bottom: 5px;    
+    font-weight: bold;
+}
+
+.leaflet-control-layers-tree-child > .leaflet-control-layers-child{
+    height: 0;
+    display: none;
+    margin-left: 35px;
+}

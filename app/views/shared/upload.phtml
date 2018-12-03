@@ -1,0 +1,111 @@
+<div class="row pl-4  animated fadeIn" filters="queueLimit, customFilter, xmlFilter" ng-controller="UploadController" nv-file-drop="" uploader="uploader">
+  <div class="col-md-3">
+    <h3>Выберите файлы</h3>
+    Максимальный объем загрузки 256Мб
+    <div ng-show="uploader.isHTML5">
+      <!-- 3. nv-file-over uploader="link" over-class="className" -->
+      <div class="wells" nv-file-over="" uploader="uploader">
+        Перетащите файлы сюда (только xml)
+      </div>
+    </div>
+
+      <label for="file-upload" class="btn btn-primary btn-block">
+           Выбрать файл
+      </label>
+      <input id="file-upload" nv-file-select="" multiple type="file" uploader="uploader"/>
+  </div>
+  <div class="col-md-9" style="margin-bottom: 40px">
+    <h3>Очередь загрузки</h3>
+    <p>Размер очереди:
+      {{ uploader.queue.length }}</p>
+    <table class="table table-responsive-sm table-hover table-sm table-striped">
+      <thead>
+        <tr>
+          <th width="30%">Имя</th>
+          <th ng-show="uploader.isHTML5">Размер</th>
+          <th ng-show="uploader.isHTML5">Прогресс</th>
+          <th>Статус</th>
+          <th>Действие</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in uploader.queue">
+          <td>
+            <strong>{{ item.file.name }}</strong>
+          </td>
+          <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }}
+            MB</td>
+          <td ng-show="uploader.isHTML5">
+            <div class="progress" style="margin-bottom: 0;">
+              <div class="progress-bar" ng-style="{ 'width': item.progress + '%' }" role="progressbar"></div>
+            </div>
+          </td>
+          <td class="text-center">
+            <span ng-show="item.isSuccess">
+              <i class="fa fa-check-square fa-lg" aria-hidden="true"></i>
+            </span>
+            <span ng-show="item.isCancel">
+              <i class="fa fa-ban fa-lg" aria-hidden="true"></i>
+            </span>
+            <span ng-show="item.isError">
+              <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm" ng-click="upload(item)" ng-disabled="item.isReady || item.isUploading || item.isSuccess" type="button">
+                <i class="fa fa-upload fa-lg" aria-hidden="true"></i>
+              Загрузить
+            </button>
+            <button class="btn btn-warning btn-sm" ng-click="cancel(item)" ng-disabled="!item.isUploading" type="button">
+                <i class="fa fa-ban fa-lg" aria-hidden="true"></i>
+              Отменить
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="item.remove()" type="button">
+                <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+              Удалить
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-show="buttons">
+      <div>
+        Общий прогресс:
+        <div class="progress" style="">
+          <div class="progress-bar" ng-style="{ 'width': uploader.progress + '%' }" role="progressbar"></div>
+        </div>
+      </div>
+        <br>
+      <button class="btn btn-success btn-s" ng-click="uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" type="button">
+          <i class="fa fa-upload fa-lg" aria-hidden="true"></i>
+        Загрузить все
+      </button>
+      <button class="btn btn-warning btn-s" ng-click="cancelAll()" ng-disabled="!uploader.isUploading" type="button">
+          <i class="fa fa-ban fa-lg" aria-hidden="true"></i>
+        Отменить все
+      </button>
+      <button class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length" type="button">
+          <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+        Удалить все
+      </button>
+    </div>
+    <div ng-show="log.length">
+      <h3>
+        Лог импорта
+      </h3>
+      <table>
+        <thead>
+          <th width="50%">Файл</th>
+          <th>Ссылка на лог</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="logitem in log">
+            <td><strong>{{logitem[0]}}<strong></td>
+            <td><a ng-href="{{logitem[1]}}" target="_blank">{{logitem[1]}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

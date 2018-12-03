@@ -1,0 +1,33 @@
+<div ng-controller="DeleteCtrl" class="row pl-4 animated fadeIn">
+    <div class="col-md-12">
+        <form name="inputForm" ng-submit="inputForm.$valid && remove(data)" novalidate>
+            <div class="form-group">
+                <select class="form-control" style="height: 10%" ng-model="type">
+                    <option value="Opory">Опоры</option>
+                    <option value="Lines">Линии</option>
+                    <option value="Ps">Подстанции</option>
+                </select>
+                <br/>
+                <div ng-class="{'has-error' : inputForm.$invalid}">
+                    <textarea ng-change="onChange()" class="form-control" ng-maxlength="10000" ng-model="data"
+                              ng-trim="false" placeholder="Одно техместо в строке" required rows="5"></textarea>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <div ng-show="type=='Lines'">
+                            <input type="checkbox" ng-model="dell_opory" value="dell_opory"> Удалить соответствующие
+                            опоры
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <input class="btn btn-danger" ng-disabled="inputForm.$invalid" type="submit" value="{{button}}">
+                    </div>
+                </div>
+                <div class="pull-left text-danger" ng-show="!!inputForm.$error.maxlength">
+                    Слишком много объектов, попробуйте разбить на несколько запросов.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

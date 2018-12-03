@@ -1,0 +1,41 @@
+<div ng-controller="SearchCtrl" class="row pl-4  animated fadeIn">
+    <div class="col-md-3">
+        <form class="form-inline">
+            <input class="form-control mb-2 mr-sm-2 mb-sm-0" ng-model="query" placeholder="Название РЭС" type="text">
+            <input class="btn btn-primary ml-4" ng-disabled="disabled" type="submit" ng-click="search('Res', query)"
+                   value="Найти">
+            <div style="margin-top: 5px" ng-show="scaleLoaded">
+                <div class="scale-block"><p>Масштаб филиала: </p><input type="range" ng-model="filiationScale" max="20" min="0">
+                    <p> {{filiationScale}}</p></div>
+                <div class="scale-block"><p>Масштаб ПО: </p><input type="range" ng-model="poScale" max="20" min="0">
+                    <p>{{poScale}}</p></div>
+                <div class="scale-block"><p>Масштаб РЭС: </p><input type="range" ng-model="resScale" max="20" min="0">
+                    <p>{{resScale}}</p></div>
+                <div class="scale-block"><input class="btn btn-primary ml-4" type="button" ng-click="saveScale()" value="Сохранить масштаб">
+                </div>
+            </div>
+        </form>
+        <br>
+    </div>
+
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Название РЭС</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr current-page="pagination.current" dir-paginate="res in data.items | itemsPerPage: itemPerPage"
+                pagination-id="res">
+                <td>{{res.properties.Label}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" ng-click="open('lg', res, 'res')">Свойства</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls pagination-id="univers_objs"></dir-pagination-controls>
+    </div>
+</div>

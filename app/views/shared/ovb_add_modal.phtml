@@ -1,0 +1,57 @@
+<script type="text/ng-template" id="ovbaddModalContent">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Свойства</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="form-group row margin_0 col-md-12">
+            <div class="col-md-8">
+                <label for="forName">Название группы</label>
+                <input value="{{$ctrl.groupName}}" ng-model = "$ctrl.groupName" required type="text" class="form-control" id="forName" placeholder="название" ng-change="$ctrl.focusCapture()">
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Выберите файл</h5>
+                        только <b>SVG</b>
+
+
+                        <label for="file-upload" class="btn btn-primary btn-block">
+                            Выбрать файл
+                        </label>
+                        <input id="file-upload" nv-file-select="" type="file" uploader="uploader"/>
+                    </div>
+                    <div class="col-md-6" style="margin-bottom: 40px">
+                        <h5>Информация</h5>
+                        <table class="table table-responsive-sm table-hover table-sm table-striped">
+                            <thead>
+                            <tr>
+                                <th width="50%">Имя</th>
+                                <th ng-show="uploader.isHTML5">Размер</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in uploader.queue">
+                                <td>
+                                    <strong>{{ item.file.name }}</strong>
+                                </td>
+                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }}
+                                    MB
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 text-center">
+                <label for="forPic">Картинка</label>
+                <img id="forPic" class="img-thumbnail" src="{{$ctrl.picSource}}" ng-show="$ctrl.picShow">
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Отмена</button>
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled = "!$ctrl.isOk">OK</button>
+    </div>
+</script>

@@ -1,0 +1,43 @@
+<div ng-controller="SearchCtrl" class="row pl-4  animated fadeIn">
+    <div class="col-md-3 pb-2">
+        <div class="card">
+            <div class="card-body">
+                <form id="search_univers_ways_form" ng-submit="search('UniverseWays', query)">
+                    <div class="form-group">
+                        <label for="nf-search">Поиск</label>
+                        <input type="text" id="search-field" name="nf-search" class="form-control" ng-model="query" placeholder="Название пути">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" type="submit" form="search_univers_ways_form" ng-disabled="disabled">
+                    <i class="fa"></i>Найти</button>
+            </div>
+        </div>
+<!--        <div class="pt-2">-->
+<!--            <input class="btn btn-primary btn-block" ng-disabled="disabled" ng-click="open('lg',null,'UnObAdd')" type="submit" value="Добавить новый маршрут">-->
+<!--        </div>-->
+    </div>
+    <div class="col-md-9 pr-0">
+        <table class="table table-responsive-sm table-hover table-sm table-striped">
+            <thead>
+            <tr>
+                <th style="width: 5%"></th>
+                <th style="width: 35%">Название</th>
+                <th style="width: 25%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr current-page="pagination.current" dir-paginate="univers_ways in data.items | itemsPerPage: itemPerPage" pagination-id="univers_ways">
+                <td><i class="fa fa-dot-circle-o" style="color: #0099FF"></i></td>
+                <td>{{univers_ways.properties.name}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" ng-click="delete_obj('univers_ways', univers_ways._id.$oid, '_id')">Удалить</button>
+                    <button class="btn btn-primary btn-sm" ng-click="open('lg', univers_ways, 'universeWays')">Свойства</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls pagination-id="univers_ways"></dir-pagination-controls>
+    </div>
+</div>

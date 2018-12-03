@@ -1,0 +1,27 @@
+<script type="text/ng-template" id="workersModalContent">
+    <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Свойства</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<div class="form-group row margin_0">
+		<textarea class="form-control popup_info" ng-model="info">{{$ctrl.info}}</textarea>
+		<input class="btn btn-primary pull-right" ng-disabled="disabled" type="button" ng-click="$ctrl.objects.update($ctrl.id.$oid, '_id', $ctrl.type, 'info', info)" value="Изменить">
+	</div>
+	<hr>
+	<div class="form-group">
+		<select class="form-control" ng-repeat="item in $ctrl.items" ng-model="$ctrl.brigade" value="{{ $ctrl.brigade }}">
+			<option value="{{item.id}}">{{item.name}}</option>
+		</select>
+		<input class="form-control" ng-model="$ctrl.name" placeholder="Имя" required 
+			   type="text" value="{{ $ctrl.name }}">
+		<input class="form-control" ng-model="$ctrl.phone" placeholder="Номер" required type="text"
+			   value="{{$ctrl.phone}}">
+		<input class="form-control" ng-model="$ctrl.email" placeholder="Email" required type="text"
+			   value="{{$ctrl.email}}">
+		<button class="btn btn-primary" type="button" ng-click="$ctrl.objects.update_href($ctrl.id, item.href, $ctrl.type, item.type_href, item.name, item.id)">Изменить</button>
+	</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+</div>
+</script>

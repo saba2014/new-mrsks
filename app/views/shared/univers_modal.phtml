@@ -1,0 +1,67 @@
+<!--<script type="text/ng-template" id="universModalContent">-->
+<script type="text/ng-template" id="universModalContent">
+    <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Свойства</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<div class="form-group row margin_0">
+		<textarea class="form-control popup_info" ng-model="info">{{$ctrl.info}}</textarea>
+		<input class="btn btn-primary pull-right" ng-disabled="disabled" type="button" ng-click="$ctrl.objects.update($ctrl.id.$oid, '_id', $ctrl.type, 'info', info)" value="Изменить">
+	</div>
+	<hr>
+    <div class="block" ng-repeat="item in $ctrl.items">
+        <form class="form-inline" ng-submit="">
+                <select class="form-control col-md-2 mr-2" ng-model="item.type_href" value="{{ item.type_href }}">
+                    <option value=img>Изображение</option>
+                    <option value=phone>Телефон</option>
+                    <option value=email>Email</option>
+                    <option value=video>Видеотрансляция</option>
+                    <option value=pdf>PDF</option>
+                    <option value=url>url</option>
+                </select>
+                <input class="form-control col-md-3 mr-2 pl-3" ng-model="item.name" placeholder="Имя ссылки" required 
+                       type="text" value="{{ item.name }}">
+                <input class="form-control col-md-3 mr-1 pl-3" ng-model="item.href" placeholder="url" required type="text"
+                       value="{{item.href}}">
+				<input ng-if="item.type_href == pdf" nv-file-select="" type="file" uploader="uploader"/>
+				<button class="btn btn-primary mr-1" type="button" ng-click="$ctrl.objects.update_href($ctrl.id.$oid, '_id', item.href, $ctrl.type, item.type_href, item.name, item.id)">Изменить</button>
+                <button class="btn btn-danger mr-1" type="button" ng-click="$ctrl.objects.delete_href($ctrl.id.$oid, '_id', item.id, $ctrl.type, $ctrl.delete_href)">Удалить</button>
+        </form>
+    </div>
+    <form class="form-inline" ng-submit="$ctrl.objects.update_file($ctrl.id.$oid, '_id', $scope.href, $ctrl.type, $scope.type_href, $scope.name, null, $ctrl.add_href, uploader, $ctrl.objects)">
+            <select class="form-control col-md-2 mr-2" ng-model="$scope.type_href">
+                <option value=img selected>Изображение</option>
+                <option value=phone>Телефон</option>
+                <option value=email>Email</option>
+                <option value=video>Видеотрансляция</option>
+                <option value=pdf>PDF</option>
+                <option value=url>url</option>
+            </select>
+            <input class="form-control col-md-3 mr-2 pl-3" ng-model="$scope.name" placeholder="Имя ссылки" required type="text">
+            <input class="form-control col-md-3 mr-1 pl-3" ng-model="$scope.href" placeholder="url" required type="text" ng-if="$scope.type_href !== 'pdf'">
+			<input class="form-control-static "ng-if="$scope.type_href === 'pdf'" nv-file-select="" type="file" uploader="uploader"/>
+            <input class="btn btn-primary col-md-2 mr-1" ng-disabled="disabled" type="submit" value="Добавить">
+    </form>
+    <div class="block">
+        <div class="checkbox">
+            <label>
+                <input type ="checkbox" ng-model="$ctrl.buildPercentShow"> Процесс застройки
+            </label>
+        </div>
+        <form name="formPercent" ng-show="$ctrl.buildPercentShow" novalidate>
+            Процент застройки <input type="number" ng-model="$ctrl.buildPercent" ng-step="10" ng-min="0" ng-max="100">
+            <button type="submit" class="btn btn-primary"
+                    ng-disabled="formPercent.$error.step||formPercent.$error.min||formPercent.$error.max"
+                    ng-click="$ctrl.objects.update($ctrl.id['$oid'], '_id', $ctrl.type, 'buildingPercent', $ctrl.buildPercent)">Изменить</button>
+            <span class="error" ng-show="formPercent.$error.max"><br>Ошибка! Значение не может быть больше 100</span>
+            <span class="error" ng-show="formPercent.$error.min"><br>Ошибка! Значение не может быть меньше 0</span>
+            <span class="error" ng-show="formPercent.$error.step"><br>Ошибка! Введите значение кратное 10</span>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    <!--<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>-->
+</div>
+
+</script>

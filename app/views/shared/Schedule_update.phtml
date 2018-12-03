@@ -1,0 +1,23 @@
+<div ng-controller="Shedule" class="row animated fadeIn pt-2">
+  <div class="col-md-12">
+    <form name="inputForm" ng-submit="save(data)" novalidate>
+      <div class="form-group">
+
+        <div ng-class="{'has-error' : inputForm.$invalid}">
+          <textarea ng-change="onChange()" class="form-control" ng-maxlength="10000" ng-model="data" 
+                    ng-trim="false" placeholder="Одно техместо в строке" required rows="5"
+                    style="height: 320px;"></textarea>
+        </div>
+      </div>
+    <div class="row flex-row justify-content-start">
+        <a href="{{log}}" class="btn btn-info mr-2">Лог проведённых запросов</a>
+         <input class="btn btn-success" ng-disabled="inputForm.$invalid" type="submit" value="{{button}}">
+        <div class="text-danger" ng-show="!!inputForm.$error.maxlength">
+          Слишком много запросов
+        </div>
+    </div>
+    </form>      
+  </div>
+</div>
+
+

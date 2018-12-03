@@ -1,0 +1,49 @@
+{
+  "name": "mrsk",
+  "version": "1.4.19",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com:navikey/web/mrsks.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com:navikey/leaflet/leaflet-ajax.git"
+  },
+  "description": "mrsk",
+  "dependencies": {
+    "angular": "^1.7.0",
+    "angular-animate": "^1.7.0",
+    "angular-file-upload": "^2.5.0",
+    "angular-sanitize": "^1.7.0",
+    "angular-spinner": "^1.0.1",
+    "angular-ui-bootstrap": ">=2.5.0",
+    "animate.css": ">=3.5.2",
+    "bootstrap": "^4.1.1",
+    "clipboard": "^2.0.1",
+    "d3": "^5.4.0",
+    "font-awesome": "^4.7.0",
+    "grunt-cli": "latest",
+    "jquery": ">=3.2.1",
+    "jquery-ui": ">=1.12.1",
+    "jquery.cookie": ">=1.4.1",
+    "leaflet": ">=1.3.1",
+    "leaflet-ajax": "git+ssh://git@gitlab.com:navikey/leaflet/leaflet-ajax.git",
+    "leaflet-draw": ">=0.4.0",
+    "leaflet-dvf": ">=0.3.1",
+    "leaflet-groupedlayercontrol": ">=0.6.1",
+    "leaflet-hash": ">=0.2.1",
+    "leaflet-plugins": ">=3.0.2",
+    "leaflet-polylinedecorator": ">=1.6.0",
+    "leaflet.markercluster": ">=1.0.6",
+    "navikey_js": "git+ssh://git@gitlab.com:navikey/web/navikey_js.git",
+    "ng-media": "git+https://github.com/caitp/ng-media.git",
+    "popper.js": "^1.14.3",
+    "shift": ">=0.1.8",
+    "sidebar-v2": ">=0.3.0",
+    "spin": ">=0.0.1",
+    "tether": ">=1.4.0"
+  },
+  "author": "Navikey",
+  "license": "MIT"
+}

@@ -1,0 +1,33 @@
+<script type="text/ng-template" id="universeWaysModalContent">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Свойства</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="form-group row margin_0">
+            <textarea class="form-control popup_info"
+                      ng-model="$ctrl.properties.name">{{$ctrl.properties.name}}</textarea>
+            <!--            <input class="btn btn-primary pull-right" ng-disabled="disabled" type="button" ng-click="$ctrl.objects.update($ctrl.id.$oid, '_id', $ctrl.type, 'info', info)" value="Изменить">-->
+        </div>
+        <hr>
+        <div style="overflow-y: auto; max-height: 500px;">
+            <div class="block" ng-repeat="tplnr in $ctrl.properties.tplnrs track by $index">
+                <form class="form-inline" ng-submit="">
+                    <input class="form-control col-md-4 mr-2 pl-3" ng-model="tplnr" placeholder="tplnr"
+                           ng-blur="$ctrl.focus($index, tplnr)" required
+                           type="text" value="{{ tplnr }}">
+                    <!--                <button class="btn btn-primary mr-1" type="button" ng-click="$ctrl.objects.update_href($ctrl.id.$oid, '_id', item.href, $ctrl.type, item.type_href, item.name, item.id)">Изменить</button>-->
+                    <button class="btn btn-danger mr-1" type="button" ng-click="$ctrl.deleteTplnr($index)">Удалить
+                    </button>
+                </form>
+            </div>
+            <form class="form-inline" ng-submit="">
+                <input class="form-control col-md-4 mr-2 pl-3" ng-model="$ctrl.newTplnr" placeholder="tplnr" required
+                       type="text" value="{{ $ctrl.newTplnr }}">
+                <button class="btn btn-primary mr-1" type="button" ng-click="$ctrl.addTplnr()">Добавить</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    </div>
+</script>

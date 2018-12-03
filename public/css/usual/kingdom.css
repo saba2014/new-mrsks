@@ -1,0 +1,106 @@
+#kingdom {
+    position: absolute;
+    padding: 0px;
+    left: 48px;
+    top: 68px;
+    z-index: 500;
+    scroll-behavior: auto;
+    overflow: auto;
+    /*max-width: 30%;*/
+    pointer-events: none;
+}
+
+@media screen and (max-width: 720px) {
+    #kingdom {
+        max-width: 100%;
+    }
+    .mobileMargin {
+        margin-right: 15px;
+    }
+}
+
+#armies{
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#heroes{
+    margin-right: 0;
+    padding-right: 0;
+}
+
+#rights {
+    margin-left: 0;
+    padding-right: 0;
+}
+
+.padding-0 {
+    padding: 0px;
+}
+
+.padding-5 {
+    padding: 5px;
+}
+
+.menuItemText {
+    font-size: 10pt;
+}
+
+.list-group-item {
+    padding: 2px;
+}
+
+.trainingHeader {
+    background-color: #afafaf7d;
+    font-size: 10pt;
+    height: 20px;
+}
+
+.trainingHeaderPanel {
+    background-color: rgba(0,0,0,.03);
+    font-size: 10pt;
+    padding: 5px;
+}
+
+.tr_select {
+    font-size: 12pt;
+    font-family: Tahoma, Helvetica, sans-serif;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.trainingPanel {
+    background-color: #00000000;
+    border: none;
+    overflow: auto;
+    max-height: 70%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+#smallKingdom{
+    z-index: 500;
+    position: absolute;
+    left: 0;
+    top: 120px;
+    background-color: darkgray;
+    border-radius: 0 3px 3px 0;
+    height: 60px;
+    width: 20px;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.leaflet-control-kingdom{
+    margin-left: 5px;
+    background: url('../../img/icons/kingdom.svg');
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    cursor: pointer;
+}

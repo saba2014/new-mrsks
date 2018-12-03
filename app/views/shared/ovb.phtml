@@ -1,0 +1,44 @@
+<div ng-controller="SearchCtrl" class="row pl-4 animated fadeIn">
+    <div class="col-md-3 pb-2">
+        <div class="card">
+          <div class="card-body">
+            <form id="search_ovb_form" ng-submit="search('MobileDivisions', query)">
+              <div class="form-group">
+                <label for="nf-search">Поиск</label>
+                <input type="text" id="search-field" name="nf-search" class="form-control" ng-model="query" placeholder="Название">
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" type="submit" form="search_ovb_form" ng-disabled="disabled">
+              <i class="fa"></i>Найти</button>
+          </div>
+        </div>
+        <div class="pt-2">
+            <input class="btn btn-primary btn-block" ng-disabled="disabled" ng-click="open('lg', null, 'ovbadd')" type="submit" value="Добавить группу">
+        </div>
+    </div>
+    <div class="col-md-9 pr-0">
+        <table class="table table-responsive-sm table-hover table-sm table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 3%"></th>
+                    <th style="width: 15%">Имя</th>
+                    <th style="width: 10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr current-page="pagination.current" dir-paginate="ovb in data.items | itemsPerPage: itemPerPage" pagination-id="ovb">
+                    <td><i class="fa fa-dot-circle-o" style="color: #0099FF"></i></td>
+                    <td>{{ovb.properties.name}}</td>
+                    <td>
+<!--                        <button class="btn btn-danger btn-xs" ng-click="remove_obj('MobileDivisions', ovb._id, '_id')">Удалить</button>-->
+                        <button class="btn btn-primary btn-xs" ng-click="open('lg', ovb, 'ovbadd')">Свойства</button>
+                        <button class="btn btn-danger btn-xs" ng-click="deleteDivision(ovb._id.$oid)">Удалить</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls pagination-id="ovb"></dir-pagination-controls>
+    </div>
+</div>

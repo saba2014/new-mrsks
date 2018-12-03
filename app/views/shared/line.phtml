@@ -1,0 +1,45 @@
+<div ng-controller="SearchCtrl" class="row pl-4 animated fadeIn">
+    <div class="col-md-3 pb-2">
+        <div class="card">
+          <div class="card-body">
+            <form id="search_line_form" ng-submit="search('Lines', query, pagination.current)">
+              <div class="form-group">
+                <label for="nf-search">Поиск</label>
+                <input type="text" id="search-field" name="nf-search" class="form-control" ng-model="query" placeholder="Техместо">
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" type="submit" form="search_line_form" ng-disabled="disabled">
+              <i class="fa"></i>Найти</button>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-9 pr-0">
+        <table class="table table-responsive-sm table-hover table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 5%"></th>
+                    <th style="width: 20%">Название</th>
+                    <th style="width: 20%">Техместо</th>
+                    <th style="width: 55%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr current-page="pagination.current" dir-paginate="line in data.items | itemsPerPage: itemPerPage" pagination-id="line">
+                    <td><i class="fa fa-dot-circle-o" style="color: {{line.properties.kVoltage}}"></i></td>
+                    <td>{{line.properties.d_name}}</td>
+                    <td>{{line.properties.tplnr}}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="/api/getobjs?type=Lines&tplnr={{line.properties.tplnr}}&format=KML&filename=KML" role="button">KML</a>
+                        <button class="btn btn-danger btn-sm" ng-click="remove('Lines', line.properties.tplnr, line.properties.dell_opory)">Удалить</button>
+                        <button class="btn btn-primary btn-sm" ng-click="open('lg', line, 'electric')">Свойства</button>
+                        <input type ="checkbox" ng-model="line.properties.dell_opory" value ="dell_opory" /> В том числе опоры
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls  pagination-id="line"></dir-pagination-controls>
+    </div>
+</div>
+

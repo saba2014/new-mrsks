@@ -1,0 +1,19 @@
+{
+  "name": "mrsks",
+  "version": "1.15.9",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@gitlab.com:navikey/web/NavikeyCore.git"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "phalcon/cphalcon": ">=3.1",
+    "phalcon/incubator": ">=3.1",
+    "NavikeyCore/NavikeyCore": ">=0.1.4",
+    "php-ffmpeg/php-ffmpeg": ">=0.9.5",
+    "firebase/php-jwt": ">=4.0.0",
+    "nuovo/spreadsheet-reader": ">=0.5.11"
+  }
+}

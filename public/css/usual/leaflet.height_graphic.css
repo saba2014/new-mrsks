@@ -1,0 +1,32 @@
+.leaflet-control-height_graphic{
+    /*display: none;*/
+}
+
+.leaflet-control-distance-hg{
+    background-image: url(../images/hg.svg);
+    background-color: yellow;
+}
+
+.leaflet-control-distance-svg{
+    width: 300px;
+    height: 300px;
+}
+
+.leaflet-control-distance-text{
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 2px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.leaflet-control-distance-range{
+    margin-left: 15px;
+}    
+
+.leaflet-control-distance-hg-text{
+    margin-left: 10px;
+    float: right;
+}

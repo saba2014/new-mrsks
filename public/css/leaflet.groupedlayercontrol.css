@@ -1,0 +1,27 @@
+.leaflet-control-layers-group-name {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: .2em;
+  margin-left: 3px;
+}
+
+.leaflet-control-layers-group {
+  margin-bottom: .5em;
+}
+
+.leaflet-control-layers-list .leaflet-control-layers-group .groupHeader {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.leaflet-control-layers-names {
+  margin-left: 3px;
+}
+
+.leaflet-control-layers-selector {
+  margin-left: 20px;
+}

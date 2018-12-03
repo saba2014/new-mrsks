@@ -1,0 +1,12 @@
+<div id="kingdom" ng-show="kingdomSh" ng-class="kingdomClass">
+    <div class="fluid-container row" ng-controller="KingdomCtrl">
+        <div class="list-group col-md-4 pr-0 mr-0">
+        <div ng-repeat="resource in list" id="heroes">
+            <heroes>
+            </heroes>
+          </div>
+        </div>
+        <rights>
+        </rights>
+    </div>
+</div>

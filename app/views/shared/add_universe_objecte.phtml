@@ -1,0 +1,45 @@
+<script type="text/ng-template" id="UnObAddModalContent">
+    <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Свойства</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<div ng-class="namest">
+		<input class="form-control" ng-model="name" placeholder="Название объекта" ng-change="check()">
+	</div>
+    <br>
+    
+    <div class="row">
+        <div class="col-md-6">
+	<div ng-class="llst">
+            <input class="form-control col-md-4" ng-model="lat" placeholder="широта" ng-change="check()">
+            :
+            <input class="form-control col-md-4" ng-model="lon" placeholder="долгота" ng-change="check()">
+        </div>
+    <br>
+        <div ng-class="groupst">
+		<input class="form-control" ng-model="group" placeholder="Номер группы" ng-change="check()">
+	</div>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4">
+            <div class="radio">
+                <label><input type="radio" name="optradio" ng-model="display" ng-value="true">Отображать на карте</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio" ng-model="display" ng-value="false">Не отображать на карте</label>
+            </div>
+        </div>
+    </div>
+    
+        <div class="form-group">     
+            <textarea ng-model="info" class="form-control" id="exampleTextarea" rows="2" placeholder="Описание (Не является обязательным)"></textarea>
+        </div>
+    
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
+    <button class="btn btn-primary" type="button" ng-click="add()" ng-disabled = "!send">Добавить</button>
+</div>
+
+</script>
